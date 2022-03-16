@@ -83,4 +83,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"
 
+RUN mkdir -p /.mc /.config /.azure /config /storage /data \
+  && chgrp -R 0 /usr/bin /root /.mc /.config /.azure /config /storage /data \
+  && chmod -R g+rwX /usr/bin /root /.mc /.config /.azure /config /storage /data
+  
 ENTRYPOINT [ "./mgob" ]
